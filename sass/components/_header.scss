@@ -1,0 +1,157 @@
+.background{
+    height: 20rem;        
+    background-image: url("/images/image-hero-mobile.jpg");
+    width: 100%;
+    background-size: 100% 100%; // use 100% to fit width and height. contain and cover not fit well the image;
+    //background-size: contain;
+}
+header {
+    margin-left: 1rem;
+    margin-right: 1rem;
+    & .row{
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: space-between;
+        align-items: center;
+
+        color: white;
+        & .logo{
+            & > p{
+                font-size: 10px;
+            }
+        }
+        & .menu-toggle {
+
+            color: white;
+            &:hover, &:focus{
+                color: rgb(245, 242, 242);
+            }
+          }
+          
+    }
+    & .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0,0,0,0);
+        border: 0;
+      }
+    & .main-menu {
+        position: fixed;
+        display: none;
+        top: 0;
+        height: 100%;
+        overflow-y: none;
+        overflow-x: visible;
+        transition: width 3s;
+        z-index: 999;
+
+        & ul{
+            //position: absolute;
+            list-style: none;
+            margin: 0;
+            padding-top: 2.5em;
+            min-height: 100%;
+            width: 10rem;
+            background-color: #333; 
+        }
+
+        & a{
+            margin-left: 0;
+            display: block;
+            padding: .75rem;
+            color: white;
+            text-decoration: none;
+           // border-bottom: 1px solid #383838;
+
+        }
+
+        & .menu-close{
+            position: absolute;
+            right: 0; 
+            top: 0;
+            text-decoration: none;
+        }
+
+        &:target{
+            display: block;
+            right: 0;// change this to left if you want display the menu in left 
+            outline: none;
+
+            & .menu-close{
+                z-index: 1001;
+            }
+            
+            & ul{
+                position: relative;
+                z-index: 1000;
+            }
+            & + .backdrop{
+                position: fixed;
+                display: block;  
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                z-index: 998;
+                background: rgba(0,0,0,0.2);
+                cursor: default;
+            }
+        }
+      }
+}
+
+@include laptop_desktop{
+    .background{ 
+        background-image: url("/images/image-hero-desktop.jpg");
+        height: 30rem;   
+    }
+    header{
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: space-between;
+        margin-left: 5rem;
+        margin-right: 5rem;
+        & .row{
+            & .logo{
+                margin-top: 1.5rem;
+                & > p{
+                    font-size: 20px;
+                    font-weight: bold;
+                    
+                }
+            }
+            & .menu-toggle {
+                    display: none;
+            }
+        }
+        & .main-menu {
+            margin-top: 1.5rem;
+            position: static;
+            display: inline-block;
+
+            & ul{
+                padding: 0;
+                height: auto;
+                width: auto;
+                background: none;
+                overflow: hidden;
+                text-align: right;
+                display: flex;
+                flex-flow: row nowrap;
+                justify-content: flex-end;
+
+                & li{
+                    & a:hover, & a:focus{
+                        background-color: rgba(0,0,0,0.2);
+                        text-decoration: underline;
+                    }
+                    
+                }
+            }
+        }
+    }
+}

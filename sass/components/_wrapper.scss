@@ -1,0 +1,283 @@
+.wrapper{
+    width: 95%;
+    margin: auto;
+    min-height: 300px;
+    position: relative;
+    top: -5rem;
+    
+    display: grid;
+    row-gap: 15px;
+    justify-content: center;
+
+    // common style
+    & [class*='project-']{
+        background-color: white;
+        border-radius: 5px;
+        display: flex;
+        flex-direction: column;
+        //justify-content: center;
+        //align-items: center;
+    }
+    // common style
+    & [class*='content-']{
+        margin: 2rem 1rem 2rem 1rem;
+    }
+
+    // common style
+    & p,h1,h2,h3,h4,h5,h6{
+        text-align: center;
+        margin-block-start: 0;
+    }
+    // common style
+    & .left{
+        text-align: left;
+    }
+    // common style for button: 
+    & [class*='btn-']{
+        background-color: $ModerateCyan;
+        border: none;
+        border-radius: 50px 50px 50px 50px;
+        color: white;
+    }
+
+
+    & span{
+        color: $DarkGray;
+    }
+
+    & .project-title{
+        & > .logo-mastercraft{
+            position: relative;
+            top: -1.5rem;
+            left: calc(50% - 50px/2);
+            width: 50px;
+            height: 50px;
+        }
+        & .title{
+            padding-top: 0rem;
+            text-align: center;
+        }
+
+        & .bookmark{
+            flex-basis: 100%;
+            display: flex;
+            flex-direction: row nowrap;
+            justify-content: space-between;
+            height: 75px;
+            & .bookmark-btn{
+                flex: 0 0 60%;
+                & > .btn-back{
+                    width: 100%;
+                    height: 100%;
+                    font-size: 1.2rem;
+                }
+            }
+            & .bookmark-img{
+                flex: 0 0 25%;
+                display: flex;
+                flex-flow: row wrap;
+                justify-content: flex-end;
+                align-items: center;
+                & img{
+                    width: 75px;
+                }
+                & span{
+                    display: none;
+                }
+            }
+        }
+    }
+
+    & .project-info{
+        & .content-info{
+
+            display: flex;
+            flex-flow: row wrap;
+            justify-content: space-between;
+            & h1{
+                margin-block-start: 1rem;
+                margin-block-end: 0.3rem;
+            }
+            & > div:nth-child(-n + 2):after{ // create a horizontal line 
+                content: "";
+                display: block;
+                border-bottom: 2px solid $DarkGrayLight;
+                margin: auto;
+                width: 20%;
+            }
+            & .amount-collected, .total-backers,.days-left{
+                flex: 0 0 100%;
+            }
+            & .progress{
+                flex: 0 0 100%;
+                margin-block-start: 2rem;
+                & .progress-bar{
+                    width: 100%;
+                    height: 1rem;
+                    border-radius: 0.5rem;
+                    background-color: $WhiteSmoke;
+                }
+                & .progress-percent{
+                    position: relative;
+                    top: -1rem;
+                    width: 75%;
+                    height: 1rem;
+                    border-radius: 0.5rem;
+                    background-color: $ModerateCyan;
+                }
+            }
+        }
+    }
+
+    & .project-about{
+        & .select-box{
+            width: 100%;
+            border: 2px solid $DarkGrayLight;
+            border-radius: 5px;
+            margin-bottom: 1rem;
+            & .selected-content{
+                margin: 1rem 1rem 1rem 1rem;
+
+                & .select-option{
+                    & h4{
+                        margin-block-start: 1rem;
+                        margin-block-end: 0.3rem;
+                    }
+                    & > p > span{
+                        margin-block-start: 0;
+                        color: $ModerateCyan;
+                    }
+                }
+
+                    & .select-reward{
+                        display: flex;
+                        flex-flow: row wrap;
+                        justify-content: space-between;
+
+                        & > .product-stock{
+                            flex: 0 0 100%;
+                            margin-bottom: 1rem;
+                            & .stock{
+                                display: flex;
+                                flex-flow: row nowrap;
+                                align-items: center;
+                                & .number-stock{
+                                    font-size: 2rem;
+                                    font-weight: bold;
+                                }
+                                & > .stock-left{
+                                    margin-left: 0.4rem;
+                                    font-size: 1rem;
+                                    font-weight: normal;
+                                }
+                            }
+                        }
+
+                        & > .btn-select-reward{
+                            flex: 0 0 50%;
+                            font-size: 1rem;
+                            height: 40px;
+                        }
+                    }
+
+            }
+
+        }
+
+        & .select-box[disabled]{
+            pointer-events: none;
+            opacity: 0.5;
+            & .btn-select-reward{
+                background-color: $DarkGray;
+            }
+        }
+    }
+}
+
+@include tablet{
+    .wrapper{
+        width: 55%;
+        & .project-title{
+
+            & .bookmark{
+                margin-top: 2rem;
+                & .bookmark-btn{
+                    flex: 0 0 45%;
+                    & > .btn-back{
+                        font-size: 1rem;
+                    }
+                }
+
+                & .bookmark-img{
+                    flex: 0 0 55%;
+                    & img{
+                        position: relative;
+                        left: 35px;
+                    }
+                    & span{
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        background-color: $DarkGrayLight;
+                        flex: 0 0 65%;
+                        height: 75px;
+                        border-top-right-radius: 50px;
+                        border-bottom-right-radius: 50px;
+                        font-size: 1rem;
+                        font-weight: bold;
+                        color: $DarkGray;
+                    }
+                    
+                }
+            }
+        }
+
+        & .project-info{
+            & .content-info{
+                & .amount-collected, .total-backers,.days-left{
+                    flex: 0 0 30%;
+                }
+                & > div:nth-child(-n + 2):after{ // create a vertical line 
+                    display: none;
+                }
+            }
+        }
+        & .project-about{
+            & .select-box{
+
+                & .selected-content{
+
+    
+                        & .select-reward{
+                            & > .product-stock{
+                                flex: 0 0 50%;
+                            }
+                            & > .btn-select-reward{
+                                flex: 0 0 30%;
+                            }
+                        }
+    
+                }
+    
+            }
+
+        }
+    }
+}
+
+@include laptop_desktop{
+    .wrapper{
+        & .project-title{
+
+            & .bookmark{
+                & .bookmark-img{
+                & span{
+                        flex: 0 0 55%;
+                    }
+                }
+            }
+        }
+
+
+    }
+}

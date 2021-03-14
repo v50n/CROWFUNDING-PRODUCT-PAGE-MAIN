@@ -1,0 +1,23 @@
+$ModerateCyan : hsl(176, 50%, 47%);
+$DarkCyan: hsl(176, 72%, 28%);
+$Black: hsl(0, 0%, 0%);
+$DarkGray: hsl(0, 0%, 48%);
+$DarkGrayLight: hsl(0, 0%, 87%);
+$WhiteSmoke: rgb(245,245,245);
+$white: white;
+
+
+html {
+    box-sizing: border-box;
+}
+*, *::before, *::after {
+    box-sizing: inherit;
+}
+
+body{
+    font-family: 'segoe ui';
+    font-weight: 400 500 700;
+    font-size: 16px;
+    margin: 0;
+    background-color: $WhiteSmoke;
+}

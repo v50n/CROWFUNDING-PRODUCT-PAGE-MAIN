@@ -1,0 +1,588 @@
+html {
+  box-sizing: border-box;
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
+body {
+  font-family: "segoe ui";
+  font-weight: 400 500 700;
+  font-size: 16px;
+  margin: 0;
+  background-color: whitesmoke;
+}
+
+/* sass --watch app/sass:public/stylesheets */
+.background {
+  height: 20rem;
+  background-image: url("/images/image-hero-mobile.jpg");
+  width: 100%;
+  background-size: 100% 100%;
+}
+
+header {
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+header .row {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+}
+header .row .logo > p {
+  font-size: 10px;
+}
+header .row .menu-toggle {
+  color: white;
+}
+header .row .menu-toggle:hover, header .row .menu-toggle:focus {
+  color: #f5f2f2;
+}
+header .sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+header .main-menu {
+  position: fixed;
+  display: none;
+  top: 0;
+  height: 100%;
+  overflow-y: none;
+  overflow-x: visible;
+  transition: width 3s;
+  z-index: 999;
+}
+header .main-menu ul {
+  list-style: none;
+  margin: 0;
+  padding-top: 2.5em;
+  min-height: 100%;
+  width: 10rem;
+  background-color: #333;
+}
+header .main-menu a {
+  margin-left: 0;
+  display: block;
+  padding: 0.75rem;
+  color: white;
+  text-decoration: none;
+}
+header .main-menu .menu-close {
+  position: absolute;
+  right: 0;
+  top: 0;
+  text-decoration: none;
+}
+header .main-menu:target {
+  display: block;
+  right: 0;
+  outline: none;
+}
+header .main-menu:target .menu-close {
+  z-index: 1001;
+}
+header .main-menu:target ul {
+  position: relative;
+  z-index: 1000;
+}
+header .main-menu:target + .backdrop {
+  position: fixed;
+  display: block;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 998;
+  background: rgba(0, 0, 0, 0.2);
+  cursor: default;
+}
+
+@media only screen and (min-width: 1023px) {
+  /* STYLES GO HERE */
+  .background {
+    background-image: url("/images/image-hero-desktop.jpg");
+    height: 30rem;
+  }
+
+  header {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    margin-left: 5rem;
+    margin-right: 5rem;
+  }
+  header .row .logo {
+    margin-top: 1.5rem;
+  }
+  header .row .logo > p {
+    font-size: 20px;
+    font-weight: bold;
+  }
+  header .row .menu-toggle {
+    display: none;
+  }
+  header .main-menu {
+    margin-top: 1.5rem;
+    position: static;
+    display: inline-block;
+  }
+  header .main-menu ul {
+    padding: 0;
+    height: auto;
+    width: auto;
+    background: none;
+    overflow: hidden;
+    text-align: right;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-end;
+  }
+  header .main-menu ul li a:hover, header .main-menu ul li a:focus {
+    background-color: rgba(0, 0, 0, 0.2);
+    text-decoration: underline;
+  }
+}
+.wrapper {
+  width: 95%;
+  margin: auto;
+  min-height: 300px;
+  position: relative;
+  top: -5rem;
+  display: grid;
+  row-gap: 15px;
+  justify-content: center;
+}
+.wrapper [class*=project-] {
+  background-color: white;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+}
+.wrapper [class*=content-] {
+  margin: 2rem 1rem 2rem 1rem;
+}
+.wrapper p, .wrapper h1, .wrapper h2, .wrapper h3, .wrapper h4, .wrapper h5, .wrapper h6 {
+  text-align: center;
+  margin-block-start: 0;
+}
+.wrapper .left {
+  text-align: left;
+}
+.wrapper [class*=btn-] {
+  background-color: #3cb4ac;
+  border: none;
+  border-radius: 50px 50px 50px 50px;
+  color: white;
+}
+.wrapper span {
+  color: #7a7a7a;
+}
+.wrapper .project-title > .logo-mastercraft {
+  position: relative;
+  top: -1.5rem;
+  left: calc(50% - 50px/2);
+  width: 50px;
+  height: 50px;
+}
+.wrapper .project-title .title {
+  padding-top: 0rem;
+  text-align: center;
+}
+.wrapper .project-title .bookmark {
+  flex-basis: 100%;
+  display: flex;
+  flex-direction: row nowrap;
+  justify-content: space-between;
+  height: 75px;
+}
+.wrapper .project-title .bookmark .bookmark-btn {
+  flex: 0 0 60%;
+}
+.wrapper .project-title .bookmark .bookmark-btn > .btn-back {
+  width: 100%;
+  height: 100%;
+  font-size: 1.2rem;
+}
+.wrapper .project-title .bookmark .bookmark-img {
+  flex: 0 0 25%;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-end;
+  align-items: center;
+}
+.wrapper .project-title .bookmark .bookmark-img img {
+  width: 75px;
+}
+.wrapper .project-title .bookmark .bookmark-img span {
+  display: none;
+}
+.wrapper .project-info .content-info {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+}
+.wrapper .project-info .content-info h1 {
+  margin-block-start: 1rem;
+  margin-block-end: 0.3rem;
+}
+.wrapper .project-info .content-info > div:nth-child(-n+2):after {
+  content: "";
+  display: block;
+  border-bottom: 2px solid #dedede;
+  margin: auto;
+  width: 20%;
+}
+.wrapper .project-info .content-info .amount-collected, .wrapper .project-info .content-info .total-backers, .wrapper .project-info .content-info .days-left {
+  flex: 0 0 100%;
+}
+.wrapper .project-info .content-info .progress {
+  flex: 0 0 100%;
+  margin-block-start: 2rem;
+}
+.wrapper .project-info .content-info .progress .progress-bar {
+  width: 100%;
+  height: 1rem;
+  border-radius: 0.5rem;
+  background-color: whitesmoke;
+}
+.wrapper .project-info .content-info .progress .progress-percent {
+  position: relative;
+  top: -1rem;
+  width: 75%;
+  height: 1rem;
+  border-radius: 0.5rem;
+  background-color: #3cb4ac;
+}
+.wrapper .project-about .select-box {
+  width: 100%;
+  border: 2px solid #dedede;
+  border-radius: 5px;
+  margin-bottom: 1rem;
+}
+.wrapper .project-about .select-box .selected-content {
+  margin: 1rem 1rem 1rem 1rem;
+}
+.wrapper .project-about .select-box .selected-content .select-option h4 {
+  margin-block-start: 1rem;
+  margin-block-end: 0.3rem;
+}
+.wrapper .project-about .select-box .selected-content .select-option > p > span {
+  margin-block-start: 0;
+  color: #3cb4ac;
+}
+.wrapper .project-about .select-box .selected-content .select-reward {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+}
+.wrapper .project-about .select-box .selected-content .select-reward > .product-stock {
+  flex: 0 0 100%;
+  margin-bottom: 1rem;
+}
+.wrapper .project-about .select-box .selected-content .select-reward > .product-stock .stock {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+}
+.wrapper .project-about .select-box .selected-content .select-reward > .product-stock .stock .number-stock {
+  font-size: 2rem;
+  font-weight: bold;
+}
+.wrapper .project-about .select-box .selected-content .select-reward > .product-stock .stock > .stock-left {
+  margin-left: 0.4rem;
+  font-size: 1rem;
+  font-weight: normal;
+}
+.wrapper .project-about .select-box .selected-content .select-reward > .btn-select-reward {
+  flex: 0 0 50%;
+  font-size: 1rem;
+  height: 40px;
+}
+.wrapper .project-about .select-box[disabled] {
+  pointer-events: none;
+  opacity: 0.5;
+}
+.wrapper .project-about .select-box[disabled] .btn-select-reward {
+  background-color: #7a7a7a;
+}
+
+@media only screen and (min-device-width: 768px) {
+  /* STYLES GO HERE */
+  .wrapper {
+    width: 55%;
+  }
+  .wrapper .project-title .bookmark {
+    margin-top: 2rem;
+  }
+  .wrapper .project-title .bookmark .bookmark-btn {
+    flex: 0 0 45%;
+  }
+  .wrapper .project-title .bookmark .bookmark-btn > .btn-back {
+    font-size: 1rem;
+  }
+  .wrapper .project-title .bookmark .bookmark-img {
+    flex: 0 0 55%;
+  }
+  .wrapper .project-title .bookmark .bookmark-img img {
+    position: relative;
+    left: 35px;
+  }
+  .wrapper .project-title .bookmark .bookmark-img span {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #dedede;
+    flex: 0 0 65%;
+    height: 75px;
+    border-top-right-radius: 50px;
+    border-bottom-right-radius: 50px;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #7a7a7a;
+  }
+  .wrapper .project-info .content-info .amount-collected, .wrapper .project-info .content-info .total-backers, .wrapper .project-info .content-info .days-left {
+    flex: 0 0 30%;
+  }
+  .wrapper .project-info .content-info > div:nth-child(-n+2):after {
+    display: none;
+  }
+  .wrapper .project-about .select-box .selected-content .select-reward > .product-stock {
+    flex: 0 0 50%;
+  }
+  .wrapper .project-about .select-box .selected-content .select-reward > .btn-select-reward {
+    flex: 0 0 30%;
+  }
+}
+@media only screen and (min-width: 1023px) {
+  /* STYLES GO HERE */
+  .wrapper .project-title .bookmark .bookmark-img span {
+    flex: 0 0 55%;
+  }
+}
+.modal {
+  display: none;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  padding-top: 5rem;
+  /* Location of the box */
+  z-index: 1;
+  /* Sit on top */
+  overflow: auto;
+  left: 0;
+  top: 0;
+  background-color: black;
+  /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4);
+  /* Black w/ opacity */
+}
+.modal .modal-content {
+  background-color: white;
+  margin: auto;
+  padding: 20px;
+  width: 95%;
+  border-radius: 5px;
+}
+.modal .modal-content input[type=radio] {
+  width: 1.3rem;
+  height: 1.3rem;
+  border: 0;
+}
+.modal .modal-content p {
+  text-align: left;
+  color: #7a7a7a;
+}
+.modal .modal-content .close {
+  color: #7a7a7a;
+  float: right;
+  font-size: 20px;
+  font-weight: bold;
+}
+.modal .modal-content .close:hover, .modal .modal-content .close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+.modal .modal-content .modal-select-box {
+  display: flex;
+  flex-flow: row wrap;
+  border: 1px solid #7a7a7a;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+}
+.modal .modal-content .modal-select-box .modal-option {
+  padding: 15px;
+  height: auto;
+  display: grid;
+  grid-template-columns: 1.2fr 6fr;
+  grid-auto-rows: 0.7fr 1fr min-content;
+  flex: 0 0 100%;
+  gap: 0.3rem 0;
+  justify-content: center;
+  align-items: center;
+}
+.modal .modal-content .modal-select-box .modal-option .grid-radio {
+  grid-column: 1/2;
+  grid-row: 1/2;
+  font-size: 1.1rem;
+}
+.modal .modal-content .modal-select-box .modal-option .grid-title {
+  grid-column: 2/3;
+  grid-row: 1/2;
+  display: flex;
+  flex-flow: row wrap;
+}
+.modal .modal-content .modal-select-box .modal-option .grid-title .title {
+  flex: 0 0 100%;
+  align-self: center;
+  color: black;
+  font-weight: bold;
+}
+.modal .modal-content .modal-select-box .modal-option .grid-title > span {
+  flex: 0 0 100%;
+  color: #3cb4ac;
+  font-weight: bold;
+}
+.modal .modal-content .modal-select-box .modal-option .grid-description {
+  grid-column: 1/3;
+  grid-row: 2/3;
+}
+.modal .modal-content .modal-select-box .modal-option .grid-stock {
+  grid-column: 1/3;
+  grid-row: 3/4;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+}
+.modal .modal-content .modal-select-box .modal-option .grid-stock .stock {
+  font-weight: bold;
+  font-size: 1.3rem;
+}
+.modal .modal-content .modal-select-box .modal-option .grid-stock .stock-left {
+  padding: 0.5rem;
+  color: #7a7a7a;
+}
+.modal .modal-content .modal-select-box .grid-pledge {
+  border-top: 1px solid #7a7a7a;
+  flex: 0 0 100%;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  margin-bottom: 1rem;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+.modal .modal-content .modal-select-box .grid-pledge > .enter-your-pledge {
+  padding: 10px;
+  color: #7a7a7a;
+  flex: 0 0 100%;
+  text-align: center;
+}
+.modal .modal-content .modal-select-box .grid-pledge .pledge-amount {
+  flex: 0 0 100%;
+  display: flex;
+  flex-direction: row;
+  height: 2.4rem;
+  justify-content: space-between;
+}
+.modal .modal-content .modal-select-box .grid-pledge .pledge-amount .input-amount-section {
+  min-width: 0;
+  flex: 0 0 40%;
+  display: flex;
+  position: relative;
+}
+.modal .modal-content .modal-select-box .grid-pledge .pledge-amount .input-amount-section > i {
+  position: absolute;
+  display: block;
+  transform: translate(0, -50%);
+  top: 50%;
+  pointer-events: none;
+  width: 30px;
+  text-align: center;
+  color: #7a7a7a;
+  font-style: normal;
+  font-weight: bold;
+}
+.modal .modal-content .modal-select-box .grid-pledge .pledge-amount .input-amount-section .amount {
+  min-width: 0;
+  flex: 0 0 100%;
+  padding-left: 30px;
+  border-radius: 50px;
+  border: 1px solid #147b74;
+  color: black;
+  font-weight: bold;
+}
+.modal .modal-content .modal-select-box .grid-pledge .pledge-amount .btn-submit {
+  flex: 0 0 50%;
+  border: 1px solid #147b74;
+}
+.modal .modal-content .modal-select-box[disabled] {
+  pointer-events: none;
+  opacity: 0.5;
+}
+.modal .modal-content .checked {
+  border: 2px solid #3cb4ac;
+}
+.modal .modal-content #Pledge-25, .modal .modal-content #Pledge-75 {
+  display: none;
+}
+
+@media only screen and (min-device-width: 768px) {
+  /* STYLES GO HERE */
+  .modal {
+    padding-top: 15rem;
+    /* Location of the box */
+  }
+  .modal .modal-content {
+    width: 55%;
+  }
+  .modal .modal-content .modal-select-box .modal-option {
+    grid-template-columns: 0.5fr 5fr 0.5fr;
+    grid-auto-rows: 0.3fr 1fr;
+  }
+  .modal .modal-content .modal-select-box .modal-option .grid-title .title {
+    flex: 0 0 auto;
+  }
+  .modal .modal-content .modal-select-box .modal-option .grid-title > span {
+    flex: 0 0 auto;
+    margin-left: 1rem;
+  }
+  .modal .modal-content .modal-select-box .modal-option .grid-description {
+    grid-column: 2/4;
+    grid-row: 2/3;
+  }
+  .modal .modal-content .modal-select-box .modal-option .grid-stock {
+    grid-column: 3/4;
+    grid-row: 1/2;
+  }
+  .modal .modal-content .modal-select-box .modal-option .grid-stock .stock {
+    font-size: 1.2rem;
+  }
+  .modal .modal-content .modal-select-box .modal-option .grid-stock .stock-left {
+    padding: 0.3rem;
+  }
+  .modal .modal-content .modal-select-box .grid-pledge {
+    padding-top: 1rem;
+    margin-bottom: 1rem;
+  }
+  .modal .modal-content .modal-select-box .grid-pledge > .enter-your-pledge {
+    flex: 0 0 50%;
+    text-align: left;
+    margin-left: 0;
+  }
+  .modal .modal-content .modal-select-box .grid-pledge .pledge-amount {
+    flex: 0 0 40%;
+  }
+}
+
+/*# sourceMappingURL=app.css.map */
